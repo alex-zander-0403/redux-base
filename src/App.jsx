@@ -5,12 +5,12 @@ function App() {
   const dispatch = useDispatch();
   const cash = useSelector((state) => state.cash);
 
-  const addCash = () => {
-    dispatch({ type: "ADD_CASH", payload: 1 });
+  const addCash = (value) => {
+    dispatch({ type: "ADD_CASH", payload: value });
   };
 
-  const getCash = () => {
-    dispatch({ type: "GET_CASH", payload: 1 });
+  const getCash = (value) => {
+    dispatch({ type: "GET_CASH", payload: value });
   };
 
   return (
@@ -19,9 +19,8 @@ function App() {
 
       <h2>{cash}</h2>
 
-      <button onClick={() => addCash()}>Пополнить</button>
-
-      <button onClick={() => getCash()}>Снять</button>
+      <button onClick={() => addCash(Number(prompt()))}>Пополнить</button>
+      <button onClick={() => getCash(Number(prompt()))}>Снять</button>
     </>
   );
 }
