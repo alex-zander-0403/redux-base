@@ -3,7 +3,11 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const cash = useSelector((state) => state.cash);
+  const cash = useSelector((state) => state.cashReducer.cash);
+  const customers = useSelector((state) => state.customerReducer.customers);
+
+  console.log(cash);
+  console.log(customers);
 
   const addCash = (value) => {
     dispatch({ type: "ADD_CASH", payload: value });
