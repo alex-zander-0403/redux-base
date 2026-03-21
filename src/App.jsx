@@ -1,20 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
+import { uniqueNamesGenerator, colors, animals } from "unique-names-generator";
 import "./App.css";
 
+//
 function App() {
   const dispatch = useDispatch();
   const cash = useSelector((state) => state.cashReducer.cash);
   const customers = useSelector((state) => state.customerReducer.customers);
 
-  // console.log(cash);
-  // console.log(customers);
-
+  //
   const addCash = (value) => {
     dispatch({ type: "ADD_CASH", payload: value });
   };
 
   const getCash = (value) => {
     dispatch({ type: "GET_CASH", payload: value });
+  };
+
+  //
+  const addCustomer = () => {
+    const newCustomer = {
+      id: Date.now(),
+      name: uniqueNamesGenerator({
+        dictionaries: [colors, animals],
+      }),
+    };
+
+    dispatch({ type: "ADD_CUSTOMER", payload: newCustomer });
   };
 
   return (
@@ -26,6 +38,7 @@ function App() {
         <button className="button" onClick={() => addCash(Number(prompt()))}>
           Пополнить счет
         </button>
+
         <button className="button" onClick={() => getCash(Number(prompt()))}>
           Снять деньги
         </button>
@@ -35,6 +48,7 @@ function App() {
         <button className="button" onClick={() => addCustomer()}>
           Добавить клиента
         </button>
+
         <button className="button" onClick={() => deleteCustomer()}>
           Удалить клиента
         </button>
