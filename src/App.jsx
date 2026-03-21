@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { uniqueNamesGenerator, colors, animals } from "unique-names-generator";
 import "./App.css";
+import {
+  addCustomerAction,
+  deleteCustomerAction,
+} from "./store/customerReducer";
 
 //
 function App() {
@@ -26,11 +30,11 @@ function App() {
       }),
     };
 
-    dispatch({ type: "ADD_CUSTOMER", payload: newCustomer });
+    dispatch(addCustomerAction(newCustomer));
   };
 
   const deleteCustomer = (customer) => {
-    dispatch({ type: "DELETE_CUSTOMER", payload: customer.id });
+    dispatch(deleteCustomerAction(customer.id));
   };
 
   //
