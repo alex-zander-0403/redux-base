@@ -17,6 +17,36 @@
   }
 }
 
+/* block 1 ============================================== */
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  padding: 10px 20px;
+
+  font-size: 20px;
+  font-weight: 500;
+  /* border-radius: 10px; */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  margin: 10px 30px;
+  padding: 10px;
+
+  background-color: #2a2a2a;
+  border-radius: 10px;
+}
+
+/* ============================================== */
+
 .hero {
   position: relative;
 

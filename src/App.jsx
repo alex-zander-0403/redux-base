@@ -6,8 +6,8 @@ function App() {
   const cash = useSelector((state) => state.cashReducer.cash);
   const customers = useSelector((state) => state.customerReducer.customers);
 
-  console.log(cash);
-  console.log(customers);
+  // console.log(cash);
+  // console.log(customers);
 
   const addCash = (value) => {
     dispatch({ type: "ADD_CASH", payload: value });
@@ -19,12 +19,40 @@ function App() {
 
   return (
     <>
-      <h1>redux bank</h1>
-
+      <h1>REDUX Bank</h1>
       <h2>{cash}</h2>
 
-      <button onClick={() => addCash(Number(prompt()))}>Пополнить</button>
-      <button onClick={() => getCash(Number(prompt()))}>Снять</button>
+      <div className="button-container">
+        <button className="button" onClick={() => addCash(Number(prompt()))}>
+          Пополнить счет
+        </button>
+        <button className="button" onClick={() => getCash(Number(prompt()))}>
+          Снять деньги
+        </button>
+      </div>
+
+      <div className="button-container">
+        <button className="button" onClick={() => addCustomer()}>
+          Добавить клиента
+        </button>
+        <button className="button" onClick={() => deleteCustomer()}>
+          Удалить клиента
+        </button>
+      </div>
+
+      {customers.length > 0 ? (
+        <div>
+          {
+            <ol>
+              {customers.map((el) => (
+                <li key={el.id}>{el.name}</li>
+              ))}
+            </ol>
+          }
+        </div>
+      ) : (
+        <div>Пользователи не найдены</div>
+      )}
     </>
   );
 }
