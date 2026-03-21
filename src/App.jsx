@@ -5,6 +5,7 @@ import {
   addCustomerAction,
   deleteCustomerAction,
 } from "./store/customerReducer";
+import { fetchCustomers } from "./asyncActions/customers";
 
 //
 function App() {
@@ -37,6 +38,11 @@ function App() {
     dispatch(deleteCustomerAction(customer.id));
   };
 
+  // 2. Вызывается addManyCustomers()
+  const addManyCustomers = () => {
+    dispatch(fetchCustomers());
+  };
+
   //
   return (
     <>
@@ -56,6 +62,11 @@ function App() {
       <div className="button-container">
         <button className="button" onClick={() => addCustomer()}>
           Добавить клиента
+        </button>
+
+        {/* // 1. Пользователь нажимает кнопку */}
+        <button className="button" onClick={() => addManyCustomers()}>
+          Клиенты из JSONplaceholder
         </button>
       </div>
 

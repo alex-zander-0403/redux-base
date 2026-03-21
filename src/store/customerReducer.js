@@ -4,6 +4,7 @@ const defaultState = {
 
 const ADD_CUSTOMER = "ADD_CUSTOMER";
 const DELETE_CUSTOMER = "DELETE_CUSTOMER";
+const ADD_ASYNC_CUSTOMERS = "ADD_ASYNC_CUSTOMERS";
 
 export function customerReducer(state = defaultState, action) {
   switch (action.type) {
@@ -17,6 +18,9 @@ export function customerReducer(state = defaultState, action) {
         customers: state.customers.filter((el) => el.id !== action.payload),
       };
 
+    case ADD_ASYNC_CUSTOMERS:
+      return { ...state, customers: [...state.customers, ...action.payload] };
+
     default:
       return state;
   }
@@ -29,4 +33,8 @@ export const addCustomerAction = (payload) => {
 
 export const deleteCustomerAction = (payload) => {
   return { type: DELETE_CUSTOMER, payload };
+};
+
+export const addManyCustomerAction = (payload) => {
+  return { type: ADD_ASYNC_CUSTOMERS, payload };
 };
