@@ -29,6 +29,11 @@ function App() {
     dispatch({ type: "ADD_CUSTOMER", payload: newCustomer });
   };
 
+  const deleteCustomer = (customer) => {
+    dispatch({ type: "DELETE_CUSTOMER", payload: customer.id });
+  };
+
+  //
   return (
     <>
       <h1>REDUX Bank</h1>
@@ -48,21 +53,17 @@ function App() {
         <button className="button" onClick={() => addCustomer()}>
           Добавить клиента
         </button>
-
-        <button className="button" onClick={() => deleteCustomer()}>
-          Удалить клиента
-        </button>
       </div>
 
       {customers.length > 0 ? (
         <div>
-          {
-            <ol>
-              {customers.map((el) => (
-                <li key={el.id}>{el.name}</li>
-              ))}
-            </ol>
-          }
+          {customers.map((customer) => (
+            <div className="customer" key={customer.id}>
+              <p>{customer.name}</p>
+
+              <button onClick={() => deleteCustomer(customer)}>удалить</button>
+            </div>
+          ))}
         </div>
       ) : (
         <div>Пользователи не найдены</div>

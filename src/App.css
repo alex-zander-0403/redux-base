@@ -45,6 +45,20 @@
   border-radius: 10px;
 }
 
+.customer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  margin: 10px 30px;
+  padding: 10px;
+
+  color: #111;
+  background-color: #5a5a5a;
+  border-radius: 5px;
+}
+
 /* ============================================== */
 
 .hero {
